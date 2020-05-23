@@ -17,6 +17,9 @@ function processContentType (filename) {
     if(filename.includes('.css') === true) {
         contentType["Content-Type"] = 'text/css';
     }
+    if(filename.includes('.jpg') === true || filename.includes('.JPG') === true || filename.includes('.png') === true || filename.includes('.PNG') === true || filename.includes('.bmp') === true || filename.includes('.BMP')) {
+        contentType["Content-Type"] = 'image';
+    }
     return contentType["Content-Type"];
 }
 
@@ -40,7 +43,7 @@ var source = function (req, res) {
     console.log('----------------');
     console.log("Filepath: " + fn);  
     console.log('Server storage/directory: ');
-    fs.readdirSync('C:/mrt/Berkan/NodeJS/ServerFactorem/').forEach(file => {
+    fs.readdirSync(__dirname).forEach(file => {
         console.log("File accessible by server: " + file);
         filelist[index] = file;
         index++;
