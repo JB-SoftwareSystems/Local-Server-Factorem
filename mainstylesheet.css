@@ -1,0 +1,10 @@
+table, th, td {
+    border: 1px solid black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  a {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  h1, h3 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
