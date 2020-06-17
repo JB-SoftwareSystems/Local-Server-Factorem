@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Server Request and Communications Page</title>
+        <style>
+            .serverurl, .serverdata {
+                width:400px;
+                font-size:18px;
+                margin-top:10px;
+            }
+            .serverdata {
+                display:block;
+            }
+            .serverfile {
+                margin-top:10px;
+                width:400px;
+                height: 350px;
+            }
+            .methodtype {
+                font-size:18px;
+                display:inline;
+            }
+            .submitbtn {
+                font-size:18px;
+                margin-top:10px;
+                display:block;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Server Request and Communications Page</h1>
+        <h2>Make a request, or relay data, to a server from here:</h3>
+        <input class="serverurl" type="text" value="http://192.168.1.195:8080" placeholder="Enter server url here, ex. localhost:8080">
+        <select name="methodtype" class="methodtype">
+            <option value="GET">get</option>
+            <option value="POST">post</option>
+        </select>
+        <form id="dataform" action="http://192.168.1.195:8080" method="post">
+            <input class="serverdata" type="text" name="data1" placeholder="Enter the data you want to relay here" value=""/>
+            <textarea class="serverfile" type="text" name="filedata" placeholder="Enter 'filename': and any edits you want to that file here"></textarea>
+            <button class="submitbtn" type="submit" onclick="getserverurl(); getservermethod();">Submit</button>
+        </form>
+        <script>
+            function getserverurl () {
+                var doc = document;
+                var serverurl = doc.getElementsByClassName("serverurl")[0].value;
+                var dataform = doc.getElementById("dataform");
+                dataform.action = serverurl;
+                return serverurl;
+            }
+            function getservermethod () {
+                var doc = document;
+                var servermethod = doc.getElementsByClassName("methodtype")[0].value;
+                var dataform = doc.getElementById("dataform");
+                dataform.method = servermethod;
+                return servermethod;
+            }
+            function getData () {
+                var doc = document;
+                var serverdata = doc.getElementsByClassName("serverdata")[0].value;
+                return serverdata;
+            }
+        </script>
+    </body>
+</html>

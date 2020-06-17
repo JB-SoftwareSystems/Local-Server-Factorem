@@ -1,0 +1,30 @@
+[
+  { 
+    "name" : "Berkan",
+    "lastname" : "Mertan",
+    "gender"  : "Male",
+    "age":  13,
+    "db_data"  : true
+  },
+  { 
+    "name" : "Petek",
+    "lastname" : "Mertan",
+    "gender"  : "Female",
+    "age":  16,
+    "db_data"  : true
+  },
+  { 
+    "name" : "Pinar",
+    "lastname" : "Gungordu/Mertan",
+    "gender"  : "Female",
+    "age":  45,
+    "db_data"  : true
+  },
+  { 
+    "name" : "Kilicaslan",
+    "lastname" : "Mertan",
+    "gender"  : "Male",
+    "age":  56,
+    "db_data"  : true
+  }
+]
