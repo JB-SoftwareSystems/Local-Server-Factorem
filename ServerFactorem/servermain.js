@@ -6,7 +6,7 @@ const createHTML = require('create-html');
 const { JSDOM } = require( "jsdom" );
 const { window } = new JSDOM( "" );
 const $ = require( "jquery" )( window );
-var filignore1 = [".gitignore", "runserver.bat", "ServerFactorem.zip", "servermain.js", "mainstylesheet.css"];
+var filignore1 = [".gitignore", "runserver.bat", "ServerFactorem.zip", "servermain.js", "mainstylesheet.css"]; //You can change this into filignore if you want these files to not appear
 var filignore = ["none", "none", "none", "none", "none"];
 var html;
 var ip4 = '192.168.1.195';
@@ -26,39 +26,9 @@ fs.readFile('serverdb.json', function(err, data) {
     } 
     taffydbdata = JSON.parse(data);
     products = TAFFY([
-        { 
-          "item_name"  : "HP_Pavilion_8",
-          "connection_type" : "wireless",
-          "server_state"  : true,
-          "db_data"  : true
-        },
-        { 
-          "item_name"  : "MotoG6_Berkan",
-          "connection_type" : "wireless",
-          "server_state"  : false,
-          "db_data"  : true
-        },
-        {
-          "item_name"  : "HP_Pavilion_8.1",
-          "connection_type" : "wireless/wired",
-          "server_state"  : true,
-          "db_data"  : true
-        },
-        {
-            "item_name"  : "DELL_Pinar",
-            "connection_type" : "wireless",
-            "server_state"  : false,
-            "db_data"  : true
-        },
-        {
-            "item_name"  : "DELL_Petek",
-            "connection_type" : "wireless/wired",
-            "server_state"  : false,
-            "db_data"  : true
-        }
+        //removed for privacy reasons
       ]);
     linkeddb = TAFFY(taffydbdata);
-    linkeddb({"name":"Petek"}).update({"age":17});
     console.log("Database attributes: ")
     $.each(taffydbdata, function(key, value){
         var attr;
