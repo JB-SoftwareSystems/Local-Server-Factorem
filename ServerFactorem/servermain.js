@@ -6,11 +6,11 @@ const createHTML = require('create-html');
 const { JSDOM } = require( "jsdom" );
 const { window } = new JSDOM( "" );
 const $ = require( "jquery" )( window );
-var filignore1 = [".gitignore", "runserver.bat", "ServerFactorem.zip", "servermain.js", "mainstylesheet.css"];
-var filignore = ["none", "none", "none", "none", "none"];
+var filignore = [".gitignore", "runserver.bat", "ServerFactorem.zip", "servermain.js", "mainstylesheet.css"];
+var filignore1 = ["none", "none", "none", "none", "none"];
 var html;
-var ip4 = '192.168.1.195';
-var wiredip4 = '10.235.0.1';
+var ip4 = '192.168.*.*';
+var wiredip4 = '0.0.0.0';
 const { COPYFILE_EXCL } = fs.constants;
 var portnum = 8080;
 var contentType = {'Content-Type':'text/html'};
@@ -25,40 +25,7 @@ fs.readFile('serverdb.json', function(err, data) {
         return err;
     } 
     taffydbdata = JSON.parse(data);
-    products = TAFFY([
-        { 
-          "item_name"  : "HP_Pavilion_8",
-          "connection_type" : "wireless",
-          "server_state"  : true,
-          "db_data"  : true
-        },
-        { 
-          "item_name"  : "MotoG6_Berkan",
-          "connection_type" : "wireless",
-          "server_state"  : false,
-          "db_data"  : true
-        },
-        {
-          "item_name"  : "HP_Pavilion_8.1",
-          "connection_type" : "wireless/wired",
-          "server_state"  : true,
-          "db_data"  : true
-        },
-        {
-            "item_name"  : "DELL_Pinar",
-            "connection_type" : "wireless",
-            "server_state"  : false,
-            "db_data"  : true
-        },
-        {
-            "item_name"  : "DELL_Petek",
-            "connection_type" : "wireless/wired",
-            "server_state"  : false,
-            "db_data"  : true
-        }
-      ]);
     linkeddb = TAFFY(taffydbdata);
-    linkeddb({"name":"Petek"}).update({"age":17});
     console.log("Database attributes: ")
     $.each(taffydbdata, function(key, value){
         var attr;
@@ -70,17 +37,6 @@ fs.readFile('serverdb.json', function(err, data) {
     //Log the TAFFY database data, and log the products data to compare for debugging purposes
     console.log("TAFFY Database JSON data: ");
     console.log(taffydbdata);
-    console.log("products JSON object data: ");
-    console.log(products({"db_data":true}));
-    //Prep string containing database contents for database webpage
-    databasestringcontent = linkeddb({"db_data":true});
-    //Log database contents
-    console.log("Devices you can definitively access server from: ");
-    console.log(products({"connection_type":"wireless"}).select("item_name"));
-    console.log("Devices you can most likely access server from: ");
-    console.log(products({"connection_type":"wireless/wired"}).select("item_name"));
-    console.log("Devices you can start ServerFactorem from: ");
-    console.log(products({"server_state":true}).select("item_name"));
 });
 
 function arrayIncludes (string, array) {
